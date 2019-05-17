@@ -4,7 +4,7 @@ This replaces the existing project "portfolio-site-api."
 
 ## Description 
 
-This is the code for the API that is used to provide my portfolio site with project data that is ultimately populated into project cards. 
+This is the code for the API that is used to provide my portfolio site with project data that is ultimately populated into project cards. This creates a Lambda function that connects to an existing DynamoDB table and then exposes its data through an AWS API Gateway. Commented out code in the .yml could also be uncommented and included to create a new DynamoDB table upon deployment. 
 
 ## Deploy
 

@@ -29,32 +29,17 @@ provider:
 #  region: us-east-1
 
 # you can add statements to the Lambda function's IAM Role here
-#  iamRoleStatements:
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:ListBucket"
-#      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:PutObject"
-#      Resource:
-#        Fn::Join:
-#          - ""
-#          - - "arn:aws:s3:::"
-#            - "Ref" : "ServerlessDeploymentBucket"
-#            - "/*"
   iamRoleStatements:
     - Effect: Allow
       Action:
         - dynamodb:Query
         - dynamodb:Scan
         - dynamodb:GetItem
-      Resource:
-        - { "Fn::GetAtt": ["ProjectsTable", "Arn"]}
+      Resource: "arn:aws:dynamodb:us-east-1:916808542833:table/projects-prod"
 
 # you can define service wide environment variables here
-#  environment:
-#    variable1: value1
+  environment:
+    TABLE_NAME: projects-prod
 
 # you can add packaging information here
 #package:
@@ -70,7 +55,7 @@ functions:
     handler: index.handler
     events:
       - http:
-          path: getprojects/
+          path: projects/
           method: get
 
 #    The following are a few example events you can configure
@@ -120,18 +105,19 @@ functions:
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"
-resources:
-  Resources:
-    ProjectsTable:
-      Type: 'AWS::DynamoDB::Table'
-      Properties:
-        AttributeDefinitions: 
-          - AttributeName: projectId
-            AttributeType: S
-        KeySchema:
-          - AttributeName: projectId
-            KeyType: HASH
-        ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
-        TableName: ${self:custom.tableName}
+
+#resources:
+#  Resources:
+#    ProjectsTable:
+#      Type: 'AWS::DynamoDB::Table'
+#      Properties:
+#        AttributeDefinitions: 
+#          - AttributeName: projectId
+#            AttributeType: S
+#        KeySchema:
+#          - AttributeName: projectId
+#            KeyType: HASH
+#        ProvisionedThroughput:
+#          ReadCapacityUnits: 1
+#          WriteCapacityUnits: 1
+#        TableName: ${self:custom.tableName}
