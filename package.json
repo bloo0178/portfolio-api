@@ -1,0 +1,11 @@
+{
+  "name": "portfolio-api",
+  "version": "1.0.0",
+  "description": "API to expose project data contained within an AWS DynamoDB table. Created using the Serverless framework. Deployed to AWS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Jeff Bloom",
+  "license": "MIT"
+}
