@@ -18,6 +18,13 @@ Run the following command:
 
 ## Testing
 
+There are multiple ways to test this app. The first involves using the Serverless-Offline plugin along with serverless-dynamodb-local. 
+- npm install
+- serverless dynamodb install
+- serverless dynamodb migrate 
+- serverless offline start
+- test the endpoints 
+
 After deploying, run the following from AWS CLI to verify the service is up and running (in addition to the Jest unit/ integration tests):
 - aws apigateway test-invoke-method --rest-api-id (api id here) --resource-id (resource id here) --http-method (method here - 'GET', 'POST', etc.)
 
