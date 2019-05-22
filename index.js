@@ -1,5 +1,6 @@
 const serverless = require("serverless-http");
 const bodyParser = require("body-parser");
+const projects = require('./handlers/projects');
 const express = require("express");
 const app = express();
 const AWS = require("aws-sdk");
@@ -7,8 +8,8 @@ AWS.config.update({ region: "us-east-1" }); // delete this line from here, but a
 
 require("dotenv").config();
 
-const TABLE_NAME = process.env.TABLE_NAME;
-const dynamoDb = new AWS.DynamoDB.DocumentClient();
+//const TABLE_NAME = process.env.TABLE_NAME;
+//const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 app.use(bodyParser.json({ strict: false }));
 
@@ -21,7 +22,8 @@ app.use(function(req, res, next) {
 	next();
 });
 
-app.get("/projects", function(req, res) {
+app.use('/projects', projects); 
+/*app.get("/projects", function(req, res) {
 	const params = {
 		TableName: TABLE_NAME
 		//TableName: "portfolio-projects"
@@ -35,7 +37,7 @@ app.get("/projects", function(req, res) {
 			res.json(result);
 		}
 	});
-});
+});*/
 
 /*
 app.listen(3000, () => {
