@@ -8,7 +8,6 @@ const TABLE_NAME = process.env.TABLE_NAME;
 router.get("/", function(req, res) {
 	const params = {
 		TableName: TABLE_NAME
-		//TableName: "portfolio-projects"
     };
 
 	dynamoDb["scan"](params, (error, result) => {

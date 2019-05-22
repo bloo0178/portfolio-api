@@ -8,9 +8,6 @@ AWS.config.update({ region: "us-east-1" }); // delete this line from here, but a
 
 require("dotenv").config();
 
-//const TABLE_NAME = process.env.TABLE_NAME;
-//const dynamoDb = new AWS.DynamoDB.DocumentClient();
-
 app.use(bodyParser.json({ strict: false }));
 
 app.use(function(req, res, next) {
@@ -23,21 +20,6 @@ app.use(function(req, res, next) {
 });
 
 app.use('/projects', projects); 
-/*app.get("/projects", function(req, res) {
-	const params = {
-		TableName: TABLE_NAME
-		//TableName: "portfolio-projects"
-	};
-
-	dynamoDb.scan(params, (error, result) => {
-		if (error) {
-			console.log(error);
-			res.status(400).json({ error: "Could not get projects" });
-		} else {
-			res.json(result);
-		}
-	});
-});*/
 
 /*
 app.listen(3000, () => {

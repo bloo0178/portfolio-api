@@ -20,10 +20,8 @@ Run the following command:
 
 There are multiple ways to test this app. 
 
-1 - The first involves using the Serverless-Offline plugin along with serverless-dynamodb-local. 
+1 - The first involves using the Serverless-Offline plugin along with a live dynamoDB (can be dev or prod; not currently doing writes). 
 - npm install
-- serverless dynamodb install
-- serverless dynamodb migrate 
 - serverless offline start --stage dev
 - test the endpoints (i.e. http://localhost:3000/projects). You can use CURL to pass modified headers in your request. 
 
