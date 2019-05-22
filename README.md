@@ -9,16 +9,23 @@ This is the code for the API that is used to provide my portfolio site with proj
 ## Deploy
 
 Run the following command: 
-- serverless deploy
+- serverless deploy --stage prod
 
 ## Teardown 
 
 Run the following command: 
-- serverless remove
+- serverless remove --stage prod
 
 ## Testing
 
-After deploying, run the following from AWS CLI to verify the service is up and running (in addition to the Jest unit/ integration tests):
+There are multiple ways to test this app. 
+
+1 - The first involves using the Serverless-Offline plugin along with a live dynamoDB (can be dev or prod; not currently doing writes). 
+- npm install
+- serverless offline start --stage dev
+- test the endpoints (i.e. http://localhost:3000/projects). You can use CURL to pass modified headers in your request. 
+
+2 - After deploying, run the following from AWS CLI to verify the service is up and running (in addition to the Jest unit/ integration tests):
 - aws apigateway test-invoke-method --rest-api-id (api id here) --resource-id (resource id here) --http-method (method here - 'GET', 'POST', etc.)
 
 You can use the following to obtain info on your service: 
