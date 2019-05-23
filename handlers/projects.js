@@ -8,7 +8,7 @@ const TABLE_NAME = process.env.TABLE_NAME;
 router.get("/", function(req, res) {
 	const params = {
 		TableName: TABLE_NAME
-    };
+	};
 
 	dynamoDb["scan"](params, (error, result) => {
 		if (error) {

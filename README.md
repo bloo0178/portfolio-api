@@ -20,19 +20,19 @@ Run the following command:
 
 There are multiple ways to test this app. 
 
-1 - The first involves using the Serverless-Offline plugin along with a live dynamoDB (can be dev or prod; not currently doing writes). 
+DEV - The first involves using the Serverless-Offline plugin along with a live dynamoDB (can be dev or prod; not currently doing writes). 
 - npm install
-- serverless offline start --stage dev
-- test the endpoints (i.e. http://localhost:3000/projects). You can use CURL to pass modified headers in your request. 
+- serverless offline start --stage dev (or "npm run start-dev)
+- test the endpoints using "npm run test"
 
-2 - After deploying, run the following from AWS CLI to verify the service is up and running (in addition to the Jest unit/ integration tests):
+PROD - After deploying, run the following from AWS CLI to verify the service is up and running (in addition to the Jest unit/ integration tests):
 - aws apigateway test-invoke-method --rest-api-id (api id here) --resource-id (resource id here) --http-method (method here - 'GET', 'POST', etc.)
 
 You can use the following to obtain info on your service: 
 - serverless info 
 - aws apigateway get-resources --rest-api-id (api ID here)
 
-The API ID can be obtained using serverless info above. It will provide you with your AWS endpoints. In the URL, the text after https:// is your API ID. (i.e. https://caufjc1cde.execute-api.us-east-1.amazonaws.com/dev/projects --> caufjc1cde is my API ID). Then use the get-resources AWS command to obtain your resource-id
+The API ID can be obtained using serverless info above. It will provide you with your AWS endpoints. In the URL, the text after https:// is your API ID. (i.e. https://caufjc1cde.execute-api.us-east-1.amazonaws.com/dev/projects --> caufjc1cde is the API ID). Then use the get-resources AWS command to obtain your resource-id
 
 ## Useful links
 
