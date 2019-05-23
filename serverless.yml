@@ -54,5 +54,7 @@ functions:
     handler: index.handler
     events:
       - http:
-          path: projects/
-          method: get
+          method: any
+          path: /{proxy+}
+      #    path: projects/
+      #    method: get
