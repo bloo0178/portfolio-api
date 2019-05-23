@@ -47,7 +47,6 @@ provider:
     #TABLE_NAME: ${self:custom.tableName}
 
 plugins:
-  - serverless-dynamodb-local
   - serverless-offline
 
 functions:

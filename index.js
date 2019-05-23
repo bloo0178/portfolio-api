@@ -3,8 +3,8 @@ const bodyParser = require("body-parser");
 const projects = require('./handlers/projects');
 const express = require("express");
 const app = express();
-const AWS = require("aws-sdk");
-AWS.config.update({ region: "us-east-1" }); // delete this line from here, but add to test scripts
+//const AWS = require("aws-sdk");
+//AWS.config.update({ region: "us-east-1" }); // delete this line from here, but add to test scripts
 
 require("dotenv").config();
 
