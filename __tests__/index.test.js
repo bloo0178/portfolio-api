@@ -12,6 +12,7 @@ test("GET /projects works", function () {
 		if (err) return err;
 		expect(response.headers['content-type']).toContain('application/json');
 		expect(response.body).toHaveProperty("Items");
+		expect(response.status).toEqual(200);
 		expect(response.body.Items[0]).toHaveProperty("projectId");
 		expect(response.body.Items[0]).toHaveProperty("codeUrl");
 		expect(response.body.Items[0]).toHaveProperty("demoUrl");
