@@ -15,7 +15,7 @@ router.get("/", function(req, res) {
 			console.log(error);
 			res.status(400).json({ error: "Could not get projects" });
 		} else {
-			res.json(result);
+			res.status(200).json(result);
 		}
 	});
 });
